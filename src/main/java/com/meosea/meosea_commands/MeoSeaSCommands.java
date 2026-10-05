@@ -7,23 +7,29 @@ import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.meosea.meosea_commands.Storages.WhitelistStorage;
+import com.meosea.meosea_commands.commands.ModCommands;
+
 public class MeoSeaSCommands implements ModInitializer {
 	public static final String MOD_ID = "meosea-commands";
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
+	// Logger này dùng để ghi chữ ra console và file log.
+	// Cách tốt nhất là đặt tên logger theo mod id của bạn.
+	// Như vậy sẽ biết rõ mod nào đã ghi thông tin, cảnh báo hoặc lỗi.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+		// Đoạn code này chạy ngay khi Minecraft đã sẵn sàng để nạp mod.
+		// Tuy nhiên, một số thứ (như resources) có thể vẫn chưa được khởi tạo.
+		// Hãy tiến hành cẩn thận một chút.
 
+		WhitelistStorage.load();
+		ModCommands.registerAll();
 		LOGGER.info("Hello Fabric world!");
 	}
 
+	@SuppressWarnings("null") 
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
