@@ -7,7 +7,6 @@ import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.meosea.meosea_commands.Storages.WhitelistStorage;
 import com.meosea.meosea_commands.commands.ModCommands;
 
 public class MeoSeaSCommands implements ModInitializer {
@@ -24,7 +23,6 @@ public class MeoSeaSCommands implements ModInitializer {
 		// Tuy nhiên, một số thứ (như resources) có thể vẫn chưa được khởi tạo.
 		// Hãy tiến hành cẩn thận một chút.
 
-		WhitelistStorage.load();
 		ModCommands.registerAll();
 		LOGGER.info("Hello Fabric world!");
 	}
